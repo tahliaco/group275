@@ -1,10 +1,15 @@
-$background-color: #f9f9f9;
+$background-color: #F2F4FA;
 $text-color: #333;
 $nav-bg-color: #fff;
 $icon-size: 30px;
 $card-bg-color: #fff;
 $card-border-radius: 10px;
 $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+@font-face {
+  font-family: 'NeurialGroteskMed';
+  src: url(NeurialGroteskmedium.ttf) format('ttf')
+}
 
 .bottom-nav {
   position: fixed;
