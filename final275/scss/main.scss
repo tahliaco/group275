@@ -62,18 +62,20 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     gap: 20px;}
 
     .profile-feed {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      display: flex; /* Change to flex */
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items horizontally */
       padding: 20px;
       box-sizing: border-box;
-      margin-top: 50px; // Space for the fixed nav bar
+      margin-top: 50px;
   
       .profile-card {
           background-color: $card-bg-color;
           border-radius: $card-border-radius;
           box-shadow: $card-shadow;
           overflow: hidden;
+          width: 100%; /* Ensure full width within flex container */
+    margin-bottom: 20px; /* Add margin between cards */
   
           img {
               width: 100%;
@@ -112,11 +114,26 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
   }
   
+  .block-top {display: inline-block;
+  justify-content: space-between;}
+
+  .profile-picture-corner {
+    position: fixed; /* Position it relative to the viewport */
+    top: 20px; /* Adjust the top position */
+    right: 20px; /* Adjust the right position */
+    width: 30px; /* Adjust the width and height as needed */
+    height: 30px;
+    border-radius: 50%; /* Make it circular */
+    border: 2px solid #fff; /* Add a border */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow */
+}
+
   body {
       background-color: $background-color;
       font-family: 'Arial', sans-serif;
       color: $text-color;
-      margin: 0;
+      margin: 10px;
+      padding-left: 10pt;
       padding-bottom: 50px; // Padding for the fixed nav bar
   }
   

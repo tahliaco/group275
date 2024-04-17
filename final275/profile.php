@@ -1,8 +1,9 @@
 <?php
 session_start();
 
+// Check if the user is logged in
 if (!isset($_SESSION['user'])) {
-    header('Location: login.html');
+    header('Location: login.html'); // Redirect to login page if not logged in
     exit;
 }
 
@@ -11,6 +12,7 @@ $file_path = 'data/users.json';
 $users = json_decode(file_get_contents($file_path), true);
 $userDetails = [];
 
+// Find the user details for the logged-in user
 foreach ($users as $user) {
     if ($user['username'] === $_SESSION['user']) {
         $userDetails = $user;
@@ -18,10 +20,81 @@ foreach ($users as $user) {
     }
 }
 
+// If user details not found, destroy session and redirect to login page
 if (!$userDetails) {
     session_destroy();
     header('Location: login.html');
     exit;
+}
+
+// Function to display error message
+function displayErrorMessage($message) {
+    echo "<div class='error-message'>$message</div>";
+}
+
+// Function to display success message
+function displaySuccessMessage($message) {
+    echo "<div class='success-message'>$message</div>";
+}
+
+// Function to validate and sanitize user input
+function validateInput($input) {
+    // Perform validation and sanitization here
+    return $input;
+}
+
+// Check if form is submitted for updating profile
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validate and sanitize user input
+    $fullName = validateInput($_POST['full_name']);
+    $bio = validateInput($_POST['bio']);
+    $gradeLevel = validateInput($_POST['grade_level']);
+    $portfolioUrl = validateInput($_POST['portfolio_url']);
+    $location = validateInput($_POST['location']);
+    $email = validateInput($_POST['email']);
+    $major = validateInput($_POST['major']);
+    $minor = validateInput($_POST['minor']);
+
+    // Handle profile picture upload
+    $profilePic = $_FILES['profile_pic']['name'];
+    $profilePicTmp = $_FILES['profile_pic']['tmp_name'];
+
+    // Check if a file is uploaded
+    if (!empty($profilePic)) {
+        // Validate and move uploaded file to desired location
+        $uploadDir = 'profile_pictures/';
+        $uploadPath = $uploadDir . $profilePic;
+        if (move_uploaded_file($profilePicTmp, $uploadPath)) {
+            $userDetails['profilePic'] = $uploadPath;
+        } else {
+            displayErrorMessage('Failed to upload profile picture.');
+        }
+    }
+
+    // Update user details in the users JSON file
+    foreach ($users as &$user) {
+        if ($user['username'] === $_SESSION['user']) {
+            $user['full_name'] = $fullName;
+            $user['bio'] = $bio;
+            $user['grade_level'] = $gradeLevel;
+            $user['portfolio_url'] = $portfolioUrl;
+            $user['location'] = $location;
+            $user['email'] = $email;
+            $user['major'] = $major;
+            $user['minor'] = $minor;
+            if (!empty($profilePic)) {
+                $user['profilePic'] = $uploadPath; // Update profile picture path
+            }
+            break;
+        }
+    }
+
+    // Save updated user details back to JSON file
+    if (file_put_contents($file_path, json_encode($users, JSON_PRETTY_PRINT))) {
+        displaySuccessMessage('Profile updated successfully.');
+    } else {
+        displayErrorMessage('Failed to update profile.');
+    }
 }
 ?>
 
@@ -31,22 +104,37 @@ if (!$userDetails) {
     <meta charset="UTF-8">
     <title>User Profile</title>
     <link rel="stylesheet" href="css/main.css">
+    <!-- Add additional CSS or JS files here -->
 </head>
 <body>
     <nav class="bottom-nav">
         <ul class="nav-list">
             <li><a href="index.php" class="icon home-icon">Home</a></li>
             <li><a href="about.html" class="icon about-icon">About</a></li>
-            <?php if (isset($_SESSION['user'])): ?>
-                <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
-            <?php else: ?>
-                <li><a href="login.html" class="icon profile-icon">Login/Register</a></li>
-            <?php endif; ?>
+            <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
         </ul>
     </nav>
+    <div class="block-top">
+    <?php if (!empty($userDetails['profilePic'])): ?>
+            <img src="<?php echo htmlspecialchars($userDetails['profilePic']); ?>" alt="Profile picture" class="profile-picture-corner">
+        <?php endif; ?>
     <h1>Edit Profile</h1>
+    </div>
     <div class="profile-info">
-        <form id="profileForm" method="post" action="update_profile.php">
+        <!-- Display error or success messages here -->
+        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($errorMessage)) {
+                displayErrorMessage($errorMessage);
+            }
+            if (isset($successMessage)) {
+                displaySuccessMessage($successMessage);
+            }
+        } ?>
+        <form id="profileForm" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
+        <label for="profilePic">Profile Picture:</label>
+        <input type="file" id="profilePic" name="profile_pic">
+            <br><br>    
+        
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($userDetails['username']); ?>" readonly>
             <br><br>
@@ -67,6 +155,14 @@ if (!$userDetails) {
             <input type="text" id="grade_level" name="grade_level" value="<?php echo htmlspecialchars($userDetails['grade_level'] ?? ''); ?>">
             <br><br>
 
+            <label for="major">Major:</label>
+            <input type="text" id="major" name="major" value="<?php echo htmlspecialchars($userDetails['major'] ?? ''); ?>">
+            <br><br>
+
+            <label for="minor">Minor:</label>
+            <input type="text" id="minor" name="minor" value="<?php echo htmlspecialchars($userDetails['minor'] ?? ''); ?>">
+            <br><br>
+
             <label for="portfolio_url">Portfolio URL:</label>
             <input type="url" id="portfolio_url" name="portfolio_url" value="<?php echo htmlspecialchars($userDetails['portfolio_url'] ?? ''); ?>">
             <br><br>
@@ -82,5 +178,6 @@ if (!$userDetails) {
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
+    <!-- Add additional scripts here -->
 </body>
 </html>

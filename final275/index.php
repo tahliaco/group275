@@ -24,20 +24,34 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
             <?php endif; ?>
         </ul>
     </nav>
-    
+
     <h1>Profile Feed</h1>
     <main class="profile-feed">
         <?php foreach ($profiles as $profile): ?>
             <div class="profile-card">
-                <img src="<?php echo htmlspecialchars($profile['image_url'] ?? 'path/to/default/image.png'); ?>" alt="Profile picture">
-                <div class="profile-info">
-                    <h2><?php echo htmlspecialchars($profile['name']); ?></h2>
-                    <p><?php echo htmlspecialchars($profile['bio']); ?></p>
-                    <ul class="skills-list">
-                        <?php foreach ($profile['skills'] as $skill): ?>
-                            <li><?php echo htmlspecialchars($skill); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+            <?php if (!empty($profile['profilePic'])): ?>
+                <img src="<?php echo htmlspecialchars($profile['profilePic']); ?>" alt="Profile picture">
+            <?php endif; ?>
+            <div class="profile-info">
+                    <h2><?php echo htmlspecialchars($profile['username']); ?></h2>
+                    <?php if (!empty($profile['full_name'])): ?>
+                        <h2><?php echo htmlspecialchars($profile['full_name']); ?></h2>
+                    <?php endif; ?>
+                    <?php if (!empty($profile['bio'])): ?>
+                        <p><?php echo htmlspecialchars($profile['bio']); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($profile['grade_level'])): ?>
+                        <p><b>Grade Level:</b> <?php echo htmlspecialchars($profile['grade_level']); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($profile['major'])): ?>
+                        <p><b>Major:</b> <?php echo htmlspecialchars($profile['major']); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($profile['minor'])): ?>
+                        <p><b>Minor:</b> <?php echo htmlspecialchars($profile['minor']); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($profile['email'])): ?>
+                        <p><b>Contact:</b> <?php echo htmlspecialchars($profile['email']); ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php endforeach; ?>

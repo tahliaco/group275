@@ -47,30 +47,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to load profiles
-    function loadProfiles() {
-        fetch('php/fetch_profiles.php') // Relative to the root
-            .then(handleResponse)
-            .then(profiles => {
-                const container = document.querySelector('.profile-feed');
-                container.innerHTML = ''; // Clear existing content
-                profiles.forEach(profile => {
-                    // Build the profile card HTML and append to the container
-                    // Note: Ensure profile data structure matches your actual data
-                    container.innerHTML += `
-                        <div class="profile-card">
-                            <img src="${profile.image_url}" alt="Profile picture">
-                            <div class="profile-info">
-                                <h2>${profile.name}</h2>
-                                <p>${profile.bio}</p>
-                                <ul class="skills-list">
-                                    ${profile.skills.map(skill => `<li>${skill}</li>`).join('')}
-                                </ul>
-                            </div>
-                        </div>
-                    `;
-                });
-            })
-            .catch(error => console.error('Error loading profiles:', error));
+    function updateProfile(event) {
+        event.preventDefault(); // Prevent form submission from reloading the page
+        const formData = new FormData(); // Create FormData object
+    
+        // Add profile data fields to FormData
+        formData.append('full_name', document.getElementById('full_name').value);
+        formData.append('bio', document.getElementById('bio').value);
+        formData.append('grade_level', document.getElementById('grade_level').value);
+        formData.append('major', document.getElementById('major').value);
+        formData.append('minor', document.getElementById('minor').value);
+        formData.append('portfolio_url', document.getElementById('portfolio_url').value);
+        formData.append('location', document.getElementById('location').value);
+        
+        // Add profile picture file to FormData if selected
+        const profilePicInput = document.getElementById('profilePic');
+        if (profilePicInput.files.length > 0) {
+            formData.append('profilePic', profilePicInput.files[0]);
+        }
+    
+        fetch('php/update_profile.php', { // Relative to the root
+            method: 'POST',
+            body: formData
+        })
+        .then(handleResponse)
+        .then(data => {
+            if (data.success) {
+                window.location.reload(); // Reload page to see updates
+            } else {
+                alert(data.message || 'An error occurred.');
+            }
+        })
+        .catch(error => console.error('Error updating profile:', error));
     }
 
     // Function to update profile

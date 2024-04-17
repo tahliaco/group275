@@ -2,7 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 
-$file_path = '../data/profiles.json';
+$file_path = '../data/users.json';
 $jsonData = file_get_contents($file_path);
 $profiles = json_decode($jsonData, true);
 
