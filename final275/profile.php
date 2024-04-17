@@ -71,7 +71,7 @@ if (!$userDetails) {
             <button type="submit">Update Profile</button>
         </form>
     </div>
-    <button id="logout" onclick="window.location='logout.php';">Logout</button>
+    <button id="logout" onclick="window.location='php/logout.php';">Logout</button>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>

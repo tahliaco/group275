@@ -1,27 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Functions declaration
+    // Helper function to handle fetch responses
+    function handleResponse(response) {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response.json();
+    }
+
+    // Function to check login status
     function checkLoginStatus() {
-        fetch('php/sessions_check.php')
-            .then(response => response.json())
+        fetch('/php/session_check.php')
+            .then(handleResponse)
             .then(data => {
-                if (!data.isLoggedIn && !window.location.pathname.endsWith('/login.html') && !window.location.pathname.endsWith('/index.php')) {
-                    window.location.href = 'login.html';
+                if (!data.isLoggedIn && !window.location.pathname.endsWith('/login.html') && !window.location.pathname !== '/') {
+                    window.location.href = '/login.html';
                 }
             })
             .catch(error => console.error('Error checking session:', error));
     }
 
+    // Function to submit forms
     function submitForm(form, url) {
         const data = new FormData(form);
         fetch(url, {
             method: 'POST',
             body: data
         })
-        .then(response => response.json()) // This will fail if the response is empty or not proper JSON
+        .then(handleResponse)
         .then(data => {
             console.log("Form submission response:", data);
             if (data.success) {
-                window.location.href = 'profile.php'; // Redirect to profile page on success
+                window.location.href = '/profile.php'; // Redirect to profile page on success
             } else {
                 throw new Error(data.message); // Assuming the server sends back an error message
             }
@@ -30,11 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Form submission error:', error);
             alert('Error submitting form: ' + error.message);
         });
-    } 
+    }
 
+    // Function to load profiles
     function loadProfiles() {
-        fetch('php/fetch_profiles.php')
-            .then(response => response.json())
+        fetch('/php/fetch_profiles.php')
+            .then(handleResponse)
             .then(profiles => {
                 const container = document.querySelector('.profile-feed');
                 container.innerHTML = ''; // Clear existing content
@@ -54,15 +64,16 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error loading profiles:', error));
     }
 
+    // Function to update profile
     function updateProfile(event) {
         event.preventDefault(); // Prevent form submission from reloading the page
         var formData = new FormData(document.getElementById('profileForm'));
 
-        fetch('php/update_profile.php', {
+        fetch('/php/update_profile.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(handleResponse)
         .then(data => {
             alert(data.message);
             if (data.success) {
@@ -89,14 +100,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            submitForm(loginForm, 'php/login.php');
+            submitForm(loginForm, '/php/login.php');
         });
     }
 
     if (registerForm) {
         registerForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            submitForm(registerForm, 'php/register.php');
+            submitForm(registerForm, '/php/register.php');
         });
     }
 
@@ -104,15 +115,15 @@ document.addEventListener('DOMContentLoaded', function() {
         profileForm.addEventListener('submit', updateProfile);
     }
 
-    // Add event listener for logout button
+    // Event listener for logout button
     const logoutButton = document.getElementById('logout');
     if (logoutButton) {
         logoutButton.addEventListener('click', function() {
-            fetch('php/logout.php')
-                .then(response => response.json())
+            fetch('/php/logout.php')
+                .then(handleResponse)
                 .then(data => {
                     if (data.success) {
-                        window.location.href = 'index.php'; // Redirect to home on logout
+                        window.location.href = '/index.php'; // Redirect to home on logout
                     }
                 })
                 .catch(error => console.error('Error logging out:', error));

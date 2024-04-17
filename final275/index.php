@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$file_path = '../data/users.json';
+$file_path = 'data/users.json';
 $profiles = json_decode(file_get_contents($file_path), true) ?: [];
 ?>
 <!DOCTYPE html>
