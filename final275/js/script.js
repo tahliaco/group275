@@ -118,19 +118,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener for logout button
     const logoutButton = document.getElementById('logout');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', function() {
-            fetch('php/logout.php') // Relative to the root
-                .then(handleResponse)
-                .then(data => {
-                    if (data.success) {
-                        window.location.href = 'index.php'; // Redirect to home on logout
-                    }
-                })
-                .catch(error => console.error('Error logging out:', error));
-        });
-    }
-
+if (logoutButton) {
+    logoutButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Stop the button from causing a page reload
+        fetch('php/logout.php', { method: 'POST', credentials: 'include' })
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error status: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'login.html'; // Redirect to login page
+                } else {
+                    alert('Logout failed: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error during logout:', error);
+                alert('Error logging out: ' + error.toString());
+            });
+    });
+}
     // Load profiles if we're on the index page where the profiles should be displayed
     if (window.location.pathname.endsWith('/index.php') || window.location.pathname === '/') {
         loadProfiles();

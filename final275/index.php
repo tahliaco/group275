@@ -4,6 +4,7 @@ session_start();
 $file_path = 'data/users.json';
 $profiles = json_decode(file_get_contents($file_path), true) ?: [];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +24,7 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
             <?php endif; ?>
         </ul>
     </nav>
+    
     <h1>Profile Feed</h1>
     <main class="profile-feed">
         <?php foreach ($profiles as $profile): ?>

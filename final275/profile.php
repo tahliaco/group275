@@ -1,11 +1,13 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['user'])) {
     header('Location: login.html');
     exit;
 }
 
-$file_path = '../data/users.json';
+// Load user details from JSON
+$file_path = 'data/users.json';
 $users = json_decode(file_get_contents($file_path), true);
 $userDetails = [];
 
@@ -17,10 +19,12 @@ foreach ($users as $user) {
 }
 
 if (!$userDetails) {
+    session_destroy();
     header('Location: login.html');
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +78,7 @@ if (!$userDetails) {
             <button type="submit">Update Profile</button>
         </form>
     </div>
-    <button id="logout" onclick="window.location='php/logout.php';">Logout</button>
+    <button id="logout">Logout</button>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
