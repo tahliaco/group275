@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(handleResponse)
         .then(data => {
-            console.log(data); // See what data is being returned
+            console.log("Received data:", data);
             if (data.success) {
                 console.log("Redirecting to profile.php");
                 window.location.href = 'profile.php';
-                    } else {
+            } else {
                 alert(data.message || 'An error occurred.');
             }
         })
@@ -99,15 +99,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
+            console.log("Login form submission intercepted.");
             event.preventDefault();
-            submitForm(loginForm, 'php/login.php'); // Relative to the root
+            submitForm(this, 'php/login.php');
         });
     }
-
     if (registerForm) {
         registerForm.addEventListener('submit', function(event) {
+            console.log("Register form submission intercepted.");
             event.preventDefault();
-            submitForm(registerForm, 'php/register.php'); // Relative to the root
+            submitForm(this, 'php/register.php');
         });
     }
 
