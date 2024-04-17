@@ -9,11 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to check login status
     function checkLoginStatus() {
-        fetch('/php/session_check.php')
+        fetch('php/session_check.php') // Relative to the root
             .then(handleResponse)
             .then(data => {
-                if (!data.isLoggedIn && !window.location.pathname.endsWith('/login.html') && !window.location.pathname !== '/') {
-                    window.location.href = '/login.html';
+                // Redirect to login if not logged in and not on the login page
+                if (!data.isLoggedIn && !window.location.pathname.endsWith('/login.html')) {
+                    window.location.href = 'login.html';
                 }
             })
             .catch(error => console.error('Error checking session:', error));
@@ -22,17 +23,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to submit forms
     function submitForm(form, url) {
         const data = new FormData(form);
-        fetch(url, {
+        fetch(url, { // url is relative to the root
             method: 'POST',
             body: data
         })
         .then(handleResponse)
         .then(data => {
-            console.log("Form submission response:", data);
             if (data.success) {
-                window.location.href = '/profile.php'; // Redirect to profile page on success
+                window.location.href = 'profile.php'; // Redirect to profile page on success
             } else {
-                throw new Error(data.message); // Assuming the server sends back an error message
+                alert(data.message || 'An error occurred.');
             }
         })
         .catch(error => {
@@ -43,19 +43,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to load profiles
     function loadProfiles() {
-        fetch('/php/fetch_profiles.php')
+        fetch('php/fetch_profiles.php') // Relative to the root
             .then(handleResponse)
             .then(profiles => {
                 const container = document.querySelector('.profile-feed');
                 container.innerHTML = ''; // Clear existing content
                 profiles.forEach(profile => {
+                    // Build the profile card HTML and append to the container
+                    // Note: Ensure profile data structure matches your actual data
                     container.innerHTML += `
                         <div class="profile-card">
                             <img src="${profile.image_url}" alt="Profile picture">
                             <div class="profile-info">
                                 <h2>${profile.name}</h2>
                                 <p>${profile.bio}</p>
-                                <ul class="skills-list">${profile.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
+                                <ul class="skills-list">
+                                    ${profile.skills.map(skill => `<li>${skill}</li>`).join('')}
+                                </ul>
                             </div>
                         </div>
                     `;
@@ -68,28 +72,19 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateProfile(event) {
         event.preventDefault(); // Prevent form submission from reloading the page
         var formData = new FormData(document.getElementById('profileForm'));
-
-        fetch('/php/update_profile.php', {
+        fetch('php/update_profile.php', { // Relative to the root
             method: 'POST',
             body: formData
         })
         .then(handleResponse)
         .then(data => {
-            alert(data.message);
             if (data.success) {
                 window.location.reload(); // Reload page to see updates
+            } else {
+                alert(data.message || 'An error occurred.');
             }
         })
         .catch(error => console.error('Error updating profile:', error));
-    }
-
-    // Check login status when the DOM is fully loaded
-    checkLoginStatus();
-
-    // Load profiles when 'Load Profiles' button is clicked
-    const loadProfilesButton = document.getElementById('loadProfiles');
-    if (loadProfilesButton) {
-        loadProfilesButton.addEventListener('click', loadProfiles);
     }
 
     // Add event listeners for form submissions
@@ -100,33 +95,41 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            submitForm(loginForm, '/php/login.php');
+            submitForm(loginForm, 'php/login.php'); // Relative to the root
         });
     }
 
     if (registerForm) {
         registerForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            submitForm(registerForm, '/php/register.php');
+            submitForm(registerForm, 'php/register.php'); // Relative to the root
         });
     }
 
     if (profileForm) {
-        profileForm.addEventListener('submit', updateProfile);
+        profileForm.addEventListener('submit', updateProfile); // Profile update is handled by updateProfile function
     }
 
-    // Event listener for logout button
+    // Add event listener for logout button
     const logoutButton = document.getElementById('logout');
     if (logoutButton) {
         logoutButton.addEventListener('click', function() {
-            fetch('/php/logout.php')
+            fetch('php/logout.php') // Relative to the root
                 .then(handleResponse)
                 .then(data => {
                     if (data.success) {
-                        window.location.href = '/index.php'; // Redirect to home on logout
+                        window.location.href = 'index.php'; // Redirect to home on logout
                     }
                 })
                 .catch(error => console.error('Error logging out:', error));
         });
     }
+
+    // Load profiles if we're on the index page where the profiles should be displayed
+    if (window.location.pathname.endsWith('/index.php') || window.location.pathname === '/') {
+        loadProfiles();
+    }
+
+    // Check login status when the DOM is fully loaded
+    checkLoginStatus();
 });
