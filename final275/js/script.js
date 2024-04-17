@@ -22,16 +22,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to submit forms
     function submitForm(form, url) {
+        event.preventDefault();  
         const data = new FormData(form);
+        console.log("Form data ready to send to", url); 
+
         fetch(url, { // url is relative to the root
             method: 'POST',
             body: data
         })
         .then(handleResponse)
         .then(data => {
+            console.log(data); // See what data is being returned
             if (data.success) {
-                window.location.href = 'profile.php'; // Redirect to profile page on success
-            } else {
+                console.log("Redirecting to profile.php");
+                window.location.href = 'profile.php';
+                    } else {
                 alert(data.message || 'An error occurred.');
             }
         })

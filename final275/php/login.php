@@ -24,6 +24,7 @@ foreach ($users as $user) {
 }
 
 if ($loginSuccessful) {
+    $_SESSION['user'] = $user['username'];
     echo json_encode(['success' => true, 'message' => 'Login successful!']);
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid username or password.']);

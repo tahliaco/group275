@@ -34,7 +34,11 @@ if (!$userDetails) {
         <ul class="nav-list">
             <li><a href="index.php" class="icon home-icon">Home</a></li>
             <li><a href="about.html" class="icon about-icon">About</a></li>
-            <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
+            <?php if (isset($_SESSION['user'])): ?>
+                <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
+            <?php else: ?>
+                <li><a href="login.html" class="icon profile-icon">Login/Register</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
     <h1>Edit Profile</h1>

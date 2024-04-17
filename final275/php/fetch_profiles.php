@@ -1,6 +1,6 @@
 <?php
-header('Content-Type: application/json');
 session_start();
+header('Content-Type: application/json');
 
 $file_path = '../data/profiles.json';
 $jsonData = file_get_contents($file_path);
