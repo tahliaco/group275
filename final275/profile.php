@@ -114,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
         </ul>
     </nav>
+    
     <div class="block-top">
     <?php if (!empty($userDetails['profilePic'])): ?>
             <img src="<?php echo htmlspecialchars($userDetails['profilePic']); ?>" alt="Profile picture" class="profile-picture-corner">

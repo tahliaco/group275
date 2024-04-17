@@ -11,6 +11,15 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   src: url(NeurialGroteskmedium.ttf) format('ttf')
 }
 
+body {
+  background-color: $background-color;
+  font-family: 'Arial', sans-serif;
+  color: $text-color;
+  margin: 10px;
+  padding-left: 10pt;
+  padding-bottom: 50px; 
+}
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -117,6 +126,8 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   .block-top {display: inline-block;
   justify-content: space-between;}
 
+  .block-top h1 {color: red;}
+
   .profile-picture-corner {
     position: fixed; /* Position it relative to the viewport */
     top: 20px; /* Adjust the top position */
@@ -127,13 +138,3 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 2px solid #fff; /* Add a border */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow */
 }
-
-  body {
-      background-color: $background-color;
-      font-family: 'Arial', sans-serif;
-      color: $text-color;
-      margin: 10px;
-      padding-left: 10pt;
-      padding-bottom: 50px; // Padding for the fixed nav bar
-  }
-  
