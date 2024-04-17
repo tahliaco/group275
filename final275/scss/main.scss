@@ -140,7 +140,9 @@ body {
 }
 
 .AboutImage {
-  display: none;
+  img {
+    height: 20px;
+  }
 }
 
 html {
