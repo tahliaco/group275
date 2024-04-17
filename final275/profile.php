@@ -1,18 +1,27 @@
 <?php
 session_start();
 
-// Redirect to login page if not logged in
 if (!isset($_SESSION['user'])) {
-    header('Location: index.php');
+    header('Location: login.html');
     exit;
 }
 
-// Simulated user data, fetch from your database in production
-$username = $_SESSION['user']; // Placeholder, replace with actual user data fetching logic
-$email = $_SESSION['email'] ?? 'your-email@example.com'; // Placeholder
+$file_path = '../data/users.json';
+$users = json_decode(file_get_contents($file_path), true);
+$userDetails = [];
 
+foreach ($users as $user) {
+    if ($user['username'] === $_SESSION['user']) {
+        $userDetails = $user;
+        break;
+    }
+}
+
+if (!$userDetails) {
+    header('Location: login.html');
+    exit;
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,45 +39,39 @@ $email = $_SESSION['email'] ?? 'your-email@example.com'; // Placeholder
     </nav>
     <h1>Edit Profile</h1>
     <div class="profile-info">
-        <form id="profileForm">
+        <form id="profileForm" method="post" action="update_profile.php">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" readonly>
+            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($userDetails['username']); ?>" readonly>
             <br><br>
 
             <label for="full_name">Full Name:</label>
-            <input type="text" id="full_name" name="full_name" value="<?php echo htmlspecialchars($user['full_name'] ?? ''); ?>">
+            <input type="text" id="full_name" name="full_name" value="<?php echo htmlspecialchars($userDetails['full_name'] ?? ''); ?>">
             <br><br>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" readonly>
-            <br><br>
-
-            <label for="password">Email:</label>
-            <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($user['password']); ?>" readonly>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userDetails['email']); ?>" readonly>
             <br><br>
 
             <label for="bio">Bio:</label>
-            <textarea id="bio" name="bio" rows="4" cols="50"><?php echo htmlspecialchars($user['bio'] ?? ''); ?></textarea>
+            <textarea id="bio" name="bio" rows="4" cols="50"><?php echo htmlspecialchars($userDetails['bio'] ?? ''); ?></textarea>
             <br><br>
 
             <label for="grade_level">Grade Level:</label>
-            <input type="text" id="grade_level" name="grade_level" value="<?php echo htmlspecialchars($user['grade_level'] ?? ''); ?>">
+            <input type="text" id="grade_level" name="grade_level" value="<?php echo htmlspecialchars($userDetails['grade_level'] ?? ''); ?>">
             <br><br>
 
             <label for="portfolio_url">Portfolio URL:</label>
-            <input type="url" id="portfolio_url" name="portfolio_url" value="<?php echo htmlspecialchars($user['portfolio_url'] ?? ''); ?>">
+            <input type="url" id="portfolio_url" name="portfolio_url" value="<?php echo htmlspecialchars($userDetails['portfolio_url'] ?? ''); ?>">
             <br><br>
 
             <label for="location">Location:</label>
-            <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($user['location'] ?? ''); ?>">
+            <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($userDetails['location'] ?? ''); ?>">
             <br><br>
 
-
-            <button type="button" onclick="updateProfile()">Update Profile</button>
+            <button type="submit">Update Profile</button>
         </form>
     </div>
-    <br><br>
-    <button id="logout">Logout</button>
+    <button id="logout" onclick="window.location='logout.php';">Logout</button>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>

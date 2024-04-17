@@ -17,19 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             body: data
         })
-        .then(response => response.json())
+        .then(response => response.json()) // This will fail if the response is empty or not proper JSON
         .then(data => {
-            alert(data.message);
+            console.log("Form submission response:", data);
             if (data.success) {
-                if (url.includes('login.php') || url.includes('register.php')) {
-                    window.location.href = 'profile.php'; // Redirect to profile page after login/register
-                } else {
-                    window.location.reload(); // Reload page to see updates after profile edit
-                }
+                window.location.href = 'profile.php'; // Redirect to profile page on success
+            } else {
+                throw new Error(data.message); // Assuming the server sends back an error message
             }
         })
-        .catch(error => console.error('Error submitting form:', error));
-    }
+        .catch(error => {
+            console.error('Form submission error:', error);
+            alert('Error submitting form: ' + error.message);
+        });
+    } 
 
     function loadProfiles() {
         fetch('php/fetch_profiles.php')

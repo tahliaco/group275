@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$file_path = '../data/users.json';
+$profiles = json_decode(file_get_contents($file_path), true) ?: [];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,22 +16,18 @@
         <ul class="nav-list">
             <li><a href="index.php" class="icon home-icon">Home</a></li>
             <li><a href="about.html" class="icon about-icon">About</a></li>
-            <?php
-            session_start();
-            if(isset($_SESSION['user'])) {
-                echo '<li><a href="profile.php" class="icon profile-icon">My Profile</a></li>';
-            } else {
-                echo '<li><a href="login.html" class="icon profile-icon">Login/Register</a></li>';
-            }
-            ?>
+            <?php if (isset($_SESSION['user'])): ?>
+                <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
+            <?php else: ?>
+                <li><a href="login.html" class="icon profile-icon">Login/Register</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
     <h1>Profile Feed</h1>
-    <button id="loadProfiles">Load Profiles</button>
     <main class="profile-feed">
         <?php foreach ($profiles as $profile): ?>
             <div class="profile-card">
-                <img src="<?php echo htmlspecialchars($profile['image_url']); ?>" alt="Profile picture">
+                <img src="<?php echo htmlspecialchars($profile['image_url'] ?? 'path/to/default/image.png'); ?>" alt="Profile picture">
                 <div class="profile-info">
                     <h2><?php echo htmlspecialchars($profile['name']); ?></h2>
                     <p><?php echo htmlspecialchars($profile['bio']); ?></p>

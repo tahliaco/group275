@@ -17,7 +17,7 @@ $password = $_POST['password'];
 $loginSuccessful = false;
 foreach ($users as $user) {
     if ($user['username'] === $username && password_verify($password, $user['password'])) {
-        $_SESSION['user'] = $user['username']; // Consider storing more or less data in session based on your needs
+        $_SESSION['user'] = $user['username']; // Store username in session
         $loginSuccessful = true;
         break;
     }
