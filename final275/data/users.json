@@ -21,5 +21,10 @@
         "username": "joanna",
         "password": "$2y$10$JaXTHR.YE5CljFByMVKi0uH5wazai00uCbksAnqh7hJLGGFBbPXrW",
         "email": "joannalove03@gmail.com"
+    },
+    {
+        "username": "abdullah",
+        "password": "password",
+        "email": "a.ahmed@ymail.com"
     }
 ]
