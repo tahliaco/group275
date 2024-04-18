@@ -11,6 +11,11 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   src: url(NeurialGroteskmedium.ttf) format('ttf')
 }
 
+@font-face {
+  font-family: 'NeurialGroteskReg';
+  src: url(neurialgroteskregular.ttf) format('ttf')
+}
+
 body {
   background-color: $background-color;
   font-family: 'Arial', sans-serif;
