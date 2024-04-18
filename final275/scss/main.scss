@@ -192,3 +192,19 @@ html {
   }
   text-align: center;
 }
+.options{display: grid;grid-template-columns: 1fr 1fr 1fr; gap: 10px;}
+
+button {
+  color: #edeeed;
+  height: 38px;
+  width: 110px;
+  margin: 10px;
+  border-radius: 12px;
+  border: solid;
+  padding: 14px 10px;
+  text-align: center;
+  display: flex;
+  font-size: 21px;
+  align-items: center;
+  justify-content: center;
+}
