@@ -1,4 +1,4 @@
-$background-color: #F2F4FA;
+$background-color: blue;
 $text-color: #333;
 $nav-bg-color: #fff;
 $icon-size: 30px;
@@ -12,8 +12,8 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
-  background-color: $background-color;
-  font-family: 'Arial', sans-serif;
+  background-color: white;
+  font-family: 'Neurialgroteskmed', sans-serif;
   color: $text-color;
   margin: 10px;
   padding-left: 10pt;
@@ -139,12 +139,51 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow */
 }
 
-.AboutImage {
-  img {
-    height: 20px;
-  }
+body {
+  font-family: 'Neurialgroteskmed', sans-serif;
+  font-weight: 20;
+}
+
+.AboutImage { 
+  text-align: center; /* Center the content horizontally */
+}
+
+.AboutImage img {
+  height: 200px;
+  width: auto; 
+  display: block; /* Ensures the image is treated as a block element */
+  margin: 0 auto; /* Centers the image horizontally */
+  border-radius: 3%;
 }
 
 html {
-  background-color: black ;
+  background-color: white;
+}
+
+.header {
+  margin: 50px;
+  margin-top: -10px;
+
+}
+
+.RegText {
+  width: 80%;
+  margin: 50px;
+  margin-top: -10px;
+}
+
+.container {
+  background-color: #F2F4FA;
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto; /* Horizontally center the container */
+  border-radius: 2%;
+}
+
+.logo {
+  img {
+    height: 100px;
+    width: auto;
+  }
+  text-align: center;
 }
