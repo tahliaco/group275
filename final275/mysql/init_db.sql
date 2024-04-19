@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS acad_project;
+USE acad_project;
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    profilePic VARCHAR(255) NOT NULL,
+    bio VARCHAR(255) NOT NULL,
+    major VARCHAR(255) NOT NULL,
+    minor VARCHAR(255) NOT NULL,
+    graduation_year VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
