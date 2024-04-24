@@ -95,6 +95,12 @@ img {
         <input type="password" id="password" placeholder="Password" required>
         <input type="submit" value="Login">
     </form>
+    <h2>Register</h2>
+    <form id="register-form">
+        <input type="text" id="new-username" placeholder="New Username" required>
+        <input type="password" id="new-password" placeholder="New Password" required>
+        <input type="submit" value="Register">
+    </form>
 </div>
 
 <div id="welcome-section">
@@ -104,43 +110,65 @@ img {
 </div>
 
 <script>
-    const loginForm = document.getElementById('login-form');
-    const welcomeSection = document.getElementById('welcome-section');
-    const userGreeting = document.getElementById('user-greeting');
-    const logoutBtn = document.getElementById('logout-btn');
+  const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+const welcomeSection = document.getElementById('welcome-section');
+const userGreeting = document.getElementById('user-greeting');
+const logoutBtn = document.getElementById('logout-btn');
+
+const loggedInUser = localStorage.getItem('username');
+if (loggedInUser) {
+    showWelcomeSection(loggedInUser);
+}
+
+loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const storedPassword = localStorage.getItem(username);
+    if (storedPassword && password === storedPassword) {
+        localStorage.setItem('username', username);
+        showWelcomeSection(username);
+    } else {
+        alert('Invalid username or password.');
+    }
+});
+
+registerForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const newUsername = document.getElementById('new-username').value;
+    const newPassword = document.getElementById('new-password').value;
 
 
-    const loggedInUser = localStorage.getItem('username');
-    if (loggedInUser) {
-        showWelcomeSection(loggedInUser);
+    if (localStorage.getItem(newUsername)) {
+        alert('Username already exists. Please choose a different username.');
+        return;
     }
 
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
 
-        if (username === 'fmirza2002' && password === 'password') {
-            localStorage.setItem('username', username);
-            showWelcomeSection(username);
-        } else {
-            alert('Invalid username or password.');
-        }
-    });
+    localStorage.setItem(newUsername, newPassword);
 
-    logoutBtn.addEventListener('click', function() {
-        localStorage.removeItem('username');
-        welcomeSection.style.display = 'none';
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
-        document.getElementById('login-section').style.display = 'block';
-    });
 
-    function showWelcomeSection(username) {
-        document.getElementById('login-section').style.display = 'none';
-        welcomeSection.style.display = 'block';
-        userGreeting.textContent = username;
-    }
+    alert('Registration successful. Please log in.');
+});
+
+logoutBtn.addEventListener('click', function() {
+    localStorage.removeItem('username');
+    welcomeSection.style.display = 'none';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('new-username').value = '';
+    document.getElementById('new-password').value = '';
+    document.getElementById('login-section').style.display = 'block';
+});
+
+function showWelcomeSection(username) {
+    document.getElementById('login-section').style.display = 'none';
+    welcomeSection.style.display = 'block';
+    userGreeting.textContent = username;
+}
+
 </script>
 
 </body>
