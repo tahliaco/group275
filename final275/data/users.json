@@ -36,5 +36,31 @@
         "portfolio_url": "",
         "location": "",
         "profilePic": ""
+    },
+    {
+        "username": "fmirza",
+        "password": "$2y$10$K83CNzpahM1cq7oN\/LCqT.EbepCAKYbyzedZk4AbIZKQn3h4PnKVS",
+        "email": "",
+        "full_name": "",
+        "bio": "",
+        "grade_level": "",
+        "major": "",
+        "portfolio_url": "",
+        "location": "",
+        "profilePic": "",
+        "minor": ""
+    },
+    {
+        "username": "7ayzan",
+        "password": "$2y$10$5LksQkbG2HLaizw8EhMfN.ZgJWI\/kjadrEDeqviboXteMu5UPVyey",
+        "email": "",
+        "full_name": "",
+        "bio": "",
+        "grade_level": "",
+        "major": "",
+        "portfolio_url": "",
+        "location": "",
+        "profilePic": "",
+        "minor": ""
     }
 ]
