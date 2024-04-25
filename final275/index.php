@@ -56,6 +56,9 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
                     <?php endif; ?>
                 </div>
             </div>
+                    </br>
+                    </br>
+
         <?php endforeach; ?>
     </main>
     

@@ -88,6 +88,7 @@ body {
       box-sizing: border-box;
       margin-top: 50px;
       margin-bottom: 50px;
+      gap:20px;
   
       .profile-card {
           background-color: $card-bg-color;
@@ -96,6 +97,7 @@ body {
           overflow: hidden;
           width: 100%; /* Ensure full width within flex container */
     margin-bottom: 20px; /* Add margin between cards */
+    gap: 20px;
   
           img {
               width: 100%;
@@ -104,7 +106,7 @@ body {
           }
   
           .profile-info {
-              padding: 15px;
+              padding: 20px;
   
               h2 {
                   font-size: 20px;
@@ -181,7 +183,7 @@ html {
 }
 
 .container {
-  background-color: #F2F4FA;
+  background-color: #ffffff;
   width: 90%;
   padding: 20px;
   margin: 0 auto; /* Horizontally center the container */
