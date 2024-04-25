@@ -1,30 +1,40 @@
 [
     {
         "username": "tahliaco",
-        "password": "$2y$10$VTrtKLxCG9IVRFuiM1Ocp.nKvsxaZlUBsQE9U\/9sc7q.GVzFi44\/C",
+        "password": "$2y$10$.MdLLhz7iVvdZtf.WN5J6OMKRXYKJHIOyXipt34yFH7apfP7aPQ.e",
         "email": "tahliacoleman@gmail.com",
         "full_name": "Tahlia Coleman",
-        "bio": "My name is Tahlia and I love to watch films, ride my bike, and go on hikes.",
-        "grade_level": "sophomore",
+        "bio": "Hi, my name is Tahlia and I am from Vancouver Canada! I have experience in graphic design, game development, and unity. I am also learning sound design. I love film and art.",
+        "grade_level": "junior",
         "portfolio_url": "",
-        "location": "",
-        "major": "Business",
-        "minor": "IYA Disruptive Innovation",
+        "location": "USC Campus",
+        "major": "Business Administration",
+        "minor": "Disruptive Innovation",
         "profilePic": "profile_pictures\/Screenshot 2024-04-10 at 9.29.05\u202fPM.png"
     },
     {
-        "username": "tlc2003",
-        "password": "$2y$10$El8Lsfg.phGwUvJmNfubfekdI7DmBRZMwuiOoYo294Y3h1V\/PIT0u",
-        "email": "tahlia@jcoleman.ca"
+        "username": "avery",
+        "password": "$2y$10$d2mDl3rAiuPDX\/oelGA\/z.6a1H51gIV7oZouZycyon\/mwYTda1lC.",
+        "email": "abystrom@usc.edu",
+        "full_name": "",
+        "bio": "Hi I am avery",
+        "grade_level": "",
+        "major": "",
+        "portfolio_url": "",
+        "location": "",
+        "profilePic": "",
+        "minor": ""
     },
     {
-        "username": "joanna",
-        "password": "$2y$10$JaXTHR.YE5CljFByMVKi0uH5wazai00uCbksAnqh7hJLGGFBbPXrW",
-        "email": "joannalove03@gmail.com"
-    },
-    {
-        "username": "abdullah",
-        "password": "password",
-        "email": "a.ahmed@ymail.com"
+        "username": "Joanna",
+        "password": "$2y$10$0HStecvsgs8pzl1FGqVHxOSAd483DaBIyHwNQ.SaVgYxTq3hfD8xe",
+        "email": "joannalove03@gmail.com",
+        "full_name": "",
+        "bio": "",
+        "grade_level": "",
+        "major": "",
+        "portfolio_url": "",
+        "location": "",
+        "profilePic": ""
     }
 ]

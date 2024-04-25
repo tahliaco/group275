@@ -12,7 +12,9 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
     <title>Profile Feed</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
+
     <nav class="bottom-nav">
         <ul class="nav-list">
             <li><a href="index.php" class="icon home-icon">Home</a></li>
@@ -25,8 +27,8 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
         </ul>
     </nav>
 
-    <h1>Profile Feed</h1>
     <main class="profile-feed">
+    <h1>Profile Feed</h1>
         <?php foreach ($profiles as $profile): ?>
             <div class="profile-card">
             <?php if (!empty($profile['profilePic'])): ?>
@@ -59,5 +61,7 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
     
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
+
+
 </body>
 </html>

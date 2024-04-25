@@ -39,7 +39,9 @@ function displaySuccessMessage($message) {
 
 // Function to validate and sanitize user input
 function validateInput($input) {
-    // Perform validation and sanitization here
+    $input = trim($input);
+    $input = stripslashes($input);
+    $input = htmlspecialchars($input);
     return $input;
 }
 
@@ -61,9 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check if a file is uploaded
     if (!empty($profilePic)) {
-        // Validate and move uploaded file to desired location
         $uploadDir = 'profile_pictures/';
-        $uploadPath = $uploadDir . $profilePic;
+        $uploadPath = $uploadDir . basename($profilePic);
         if (move_uploaded_file($profilePicTmp, $uploadPath)) {
             $userDetails['profilePic'] = $uploadPath;
         } else {

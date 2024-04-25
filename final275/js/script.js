@@ -46,58 +46,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to load profiles
-    function updateProfile(event) {
-        event.preventDefault(); // Prevent form submission from reloading the page
-        const formData = new FormData(); // Create FormData object
-    
-        // Add profile data fields to FormData
-        formData.append('full_name', document.getElementById('full_name').value);
-        formData.append('bio', document.getElementById('bio').value);
-        formData.append('grade_level', document.getElementById('grade_level').value);
-        formData.append('major', document.getElementById('major').value);
-        formData.append('minor', document.getElementById('minor').value);
-        formData.append('portfolio_url', document.getElementById('portfolio_url').value);
-        formData.append('location', document.getElementById('location').value);
-        
-        // Add profile picture file to FormData if selected
-        const profilePicInput = document.getElementById('profilePic');
-        if (profilePicInput.files.length > 0) {
-            formData.append('profilePic', profilePicInput.files[0]);
-        }
-    
-        fetch('php/update_profile.php', { // Relative to the root
-            method: 'POST',
-            body: formData
-        })
-        .then(handleResponse)
-        .then(data => {
-            if (data.success) {
-                window.location.reload(); // Reload page to see updates
-            } else {
-                alert(data.message || 'An error occurred.');
-            }
-        })
-        .catch(error => console.error('Error updating profile:', error));
-    }
-
     // Function to update profile
     function updateProfile(event) {
-        event.preventDefault(); // Prevent form submission from reloading the page
+    //    event.preventDefault(); // Prevent form submission from reloading the page
         var formData = new FormData(document.getElementById('profileForm'));
-        fetch('php/update_profile.php', { // Relative to the root
-            method: 'POST',
+       // Logging FormData contents
+    for (var pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
+
+    console.log('Form Data:', formData);
+        fetch('php/update_profiles.php', { // Relative to the root
+           method: 'POST',
             body: formData
         })
         .then(handleResponse)
-        .then(data => {
-            if (data.success) {
-                window.location.reload(); // Reload page to see updates
-            } else {
+       .then(data => {
+        console.log("Received response:", data);
+           if (data.success) {
+    //            window.location.reload(); // Reload page to see updates
+           } else {
                 alert(data.message || 'An error occurred.');
             }
         })
-        .catch(error => console.error('Error updating profile:', error));
+        .catch(error => {
+            console.error('Error updating profile:', error);
+            alert('Error updating profile: ' + error.message);
+        });
     }
 
     // Add event listeners for form submissions

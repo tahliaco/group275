@@ -1,12 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VoyagerSC Login</title>
-<style>
+    
+    <title>Login</title>
+    <link rel="stylesheet" href="css/main.css">
+    <title>VoyagerSC Login</title>
+</head>
+<body>
+    <nav class="bottom-nav">
+        <ul class="nav-list">
+            <li><a href="index.php" class="icon home-icon">Home</a></li>
+            <li><a href="about.html" class="icon about-icon">About</a></li>
+            <li><a href="login.html" id="profileLink" class="icon profile-icon">Profile</a></li>
+        </ul>
+    </nav>
 
-img {
+    <div class="logo">
+        <img src="img/logo.svg">
+    </div>
+    <div id="welcome-section">
+        <h2>Welcome <span id="user-greeting"></span></h2>
+        <img src="img/pfp.png">
+    </div>
+    <div class="loginprompt">
+        Welcome! Please Log In with your credentials. If you are new please register an account to begin. <br>
+    </div>
+
+    <div class="container" id="login-section">
+        <h2>Customer Portal</h2>
+        <div class="loginForm">
+            <form id="loginForm" method="post" action="php/login.php">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </br>
+        <div class="registerForm">
+            <h2>Register</h2>
+            <form id="registerForm" method="post" action="php/register.php">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <style>
+        img {
     height: 200px;
     display: block; 
     margin-left: auto; 
@@ -16,23 +61,26 @@ img {
     body {
         font-family: 'Jakarta', sans-serif;
         margin: 0;
+        margin-bottom: 200px;
         padding: 0;
-        margin-top: 40px;
+        margin-top: 60px;
         background-color: white;
     }
     .container {
         max-width: 400px;
         margin: auto;
-        margin-top: 50px;
+        margin-top: 30px;
         padding: 20px;
         background-color: #F2F4FA;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+    .loginprompt {padding: 20pt 40pt;
+        text-align: center;}
     h2 {
         text-align: center;
     }
-    input[type="text"], input[type="password"], input[type="submit"] {
+    input[type="text"], input[type="password"], input[type="email"] {
         width: 100%;
         margin-bottom: 10px;
         padding: 10px;
@@ -40,12 +88,18 @@ img {
         border-radius: 4px;
         box-sizing: border-box;
     }
-    input[type="submit"] {
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
         background-color: black;
         color: white;
         cursor: pointer;
     }
-    input[type="submit"]:hover {
+    button:hover {
         background-color: orangered;
     }
     #welcome-section {
@@ -66,110 +120,7 @@ img {
         top: -10px; 
         left: calc(50% - 25px); 
     }
-    #user-greeting {
-        margin-top: 50px; 
-    }
-    #logout-btn {
-        margin-top: 20px; 
-        padding: 8px 16px;
-        background-color: black;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    #logout-btn:hover {
-        background-color: orangered;
-    }
 
-</style>
-</head>
-<body>
-<div class="logo">
-    <img src="img/logo.svg">
-</div>
-<div class="container" id="login-section">
-    <h2>Customer Portal</h2>
-    <form id="login-form">
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-    </form>
-    <h2>Register</h2>
-    <form id="register-form">
-        <input type="text" id="new-username" placeholder="New Username" required>
-        <input type="password" id="new-password" placeholder="New Password" required>
-        <input type="submit" value="Register">
-    </form>
-</div>
-
-<div id="welcome-section">
-    <h2>Welcome <span id="user-greeting"></span></h2>
-    <img src="img/pfp.png">
-    <button id="logout-btn">Logout</button>
-</div>
-
-<script>
-  const loginForm = document.getElementById('login-form');
-const registerForm = document.getElementById('register-form');
-const welcomeSection = document.getElementById('welcome-section');
-const userGreeting = document.getElementById('user-greeting');
-const logoutBtn = document.getElementById('logout-btn');
-
-const loggedInUser = localStorage.getItem('username');
-if (loggedInUser) {
-    showWelcomeSection(loggedInUser);
-}
-
-loginForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    const storedPassword = localStorage.getItem(username);
-    if (storedPassword && password === storedPassword) {
-        localStorage.setItem('username', username);
-        showWelcomeSection(username);
-    } else {
-        alert('Invalid username or password.');
-    }
-});
-
-registerForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const newUsername = document.getElementById('new-username').value;
-    const newPassword = document.getElementById('new-password').value;
-
-
-    if (localStorage.getItem(newUsername)) {
-        alert('Username already exists. Please choose a different username.');
-        return;
-    }
-
-
-    localStorage.setItem(newUsername, newPassword);
-
-
-    alert('Registration successful. Please log in.');
-});
-
-logoutBtn.addEventListener('click', function() {
-    localStorage.removeItem('username');
-    welcomeSection.style.display = 'none';
-    document.getElementById('username').value = '';
-    document.getElementById('password').value = '';
-    document.getElementById('new-username').value = '';
-    document.getElementById('new-password').value = '';
-    document.getElementById('login-section').style.display = 'block';
-});
-
-function showWelcomeSection(username) {
-    document.getElementById('login-section').style.display = 'none';
-    welcomeSection.style.display = 'block';
-    userGreeting.textContent = username;
-}
-
-</script>
-
+    </style>
 </body>
 </html>
