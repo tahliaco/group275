@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/main.css">
     <!-- Add additional CSS or JS files here -->
 </head>
-<body>
+
     <nav class="bottom-nav">
         <ul class="nav-list">
             <li><a href="index.php" class="icon home-icon">Home</a></li>
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
         </ul>
     </nav>
-    
+<body>
     <div class="block-top">
     <?php if (!empty($userDetails['profilePic'])): ?>
             <img src="<?php echo htmlspecialchars($userDetails['profilePic']); ?>" alt="Profile picture" class="profile-picture-corner">
