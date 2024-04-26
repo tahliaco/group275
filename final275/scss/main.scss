@@ -21,7 +21,6 @@ body {
   font-family: 'Arial', sans-serif;
   color: $text-color;
   margin: 10px;
-  padding-left: 10pt;
   padding-bottom: 50px; 
   overflow: auto;
 }
@@ -61,15 +60,19 @@ body {
 }
 
 .home-icon::before {
+<<<<<<< Updated upstream
   background-image: url('../img/logo.svg');
+=======
+  background-image: url('../final275/img/home-icon.png');
+>>>>>>> Stashed changes
 }
 
 .about-icon::before {
-  background-image: url('../img/about-icon.png');
+  background-image: url('../final275//img/about-icon.png');
 }
 
 .profile-icon::before {
-  background-image: url('../img/profile-icon.png');
+  background-image: url('../final275/img/profile-icon.png');
 }
 
 #profileForm {
@@ -139,7 +142,8 @@ body {
   .block-top {display: inline-block;
   justify-content: space-between;}
 
-  .block-top h1 {color: rgb(0, 0, 0);}
+  .block-top h1 {color: rgb(0, 0, 0);
+  padding-left: 30pt;}
 
   .profile-picture-corner {
     position: fixed; /* Position it relative to the viewport */

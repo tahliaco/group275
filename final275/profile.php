@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>User Profile</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <!-- Add additional CSS or JS files here -->
 </head>
 
@@ -174,9 +174,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <br><br>
 
             <button type="submit">Update Profile</button>
+    </br>
+    </br>
+            <button id="logout">Logout</button>
         </form>
     </div>
-    <button id="logout">Logout</button>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>

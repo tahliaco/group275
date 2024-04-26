@@ -10,7 +10,7 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
 <head>
     <meta charset="UTF-8">
     <title>Profile Feed</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
@@ -56,7 +56,6 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
                     <?php endif; ?>
                 </div>
             </div>
-                    </br>
                     </br>
 
         <?php endforeach; ?>

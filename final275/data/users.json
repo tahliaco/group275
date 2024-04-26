@@ -38,6 +38,7 @@
         "profilePic": ""
     },
     {
+<<<<<<< Updated upstream
         "username": "fmirza",
         "password": "$2y$10$K83CNzpahM1cq7oN\/LCqT.EbepCAKYbyzedZk4AbIZKQn3h4PnKVS",
         "email": "",
@@ -79,6 +80,10 @@
     {
         "username": "test123",
         "password": "$2y$10$8.uCMlBNzJR2ifYpfzuANuvTOCLGSgxf4xr.xzYwuhpseDPpNIfK2",
+=======
+        "username": "test123",
+        "password": "$2y$10$pby5JR.B6uyIC3LHLexjnOPzxMPZx6P9Kihy3LAcsWDMlrUQ\/A71a",
+>>>>>>> Stashed changes
         "email": "test123@gmail.com",
         "full_name": "",
         "bio": "",
@@ -86,7 +91,11 @@
         "major": "",
         "portfolio_url": "",
         "location": "",
+<<<<<<< Updated upstream
         "profilePic": "profile_pictures\/Screenshot 2024-04-10 at 9.28.14\u202fPM.png",
         "minor": ""
+=======
+        "profilePic": ""
+>>>>>>> Stashed changes
     }
 ]
