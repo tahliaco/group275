@@ -1,46 +1,7 @@
 [
     {
-        "username": "tahliaco",
-        "password": "$2y$10$.MdLLhz7iVvdZtf.WN5J6OMKRXYKJHIOyXipt34yFH7apfP7aPQ.e",
-        "email": "tahliacoleman@gmail.com",
-        "full_name": "Tahlia Coleman",
-        "bio": "Hi, my name is Tahlia and I am from Vancouver Canada! I have experience in graphic design, game development, and unity. I am also learning sound design. I love film and art.",
-        "grade_level": "junior",
-        "portfolio_url": "",
-        "location": "USC Campus",
-        "major": "Business Administration",
-        "minor": "Disruptive Innovation",
-        "profilePic": "profile_pictures\/Screenshot 2024-04-10 at 9.29.05\u202fPM.png"
-    },
-    {
-        "username": "avery",
-        "password": "$2y$10$d2mDl3rAiuPDX\/oelGA\/z.6a1H51gIV7oZouZycyon\/mwYTda1lC.",
-        "email": "abystrom@usc.edu",
-        "full_name": "",
-        "bio": "Hi I am avery",
-        "grade_level": "",
-        "major": "",
-        "portfolio_url": "",
-        "location": "",
-        "profilePic": "profile_pictures\/icon123.png",
-        "minor": ""
-    },
-    {
-        "username": "Joanna",
-        "password": "$2y$10$0HStecvsgs8pzl1FGqVHxOSAd483DaBIyHwNQ.SaVgYxTq3hfD8xe",
-        "email": "joannalove03@gmail.com",
-        "full_name": "",
-        "bio": "",
-        "grade_level": "",
-        "major": "",
-        "portfolio_url": "",
-        "location": "",
-        "profilePic": ""
-    },
-    {
-<<<<<<< Updated upstream
         "username": "fmirza",
-        "password": "$2y$10$K83CNzpahM1cq7oN\/LCqT.EbepCAKYbyzedZk4AbIZKQn3h4PnKVS",
+        "password": "$2y$10$AXo\/M3K9iUSTQTWNpShHx.vPOwvfQn5wMDeKTD.\/5oZrO6o\/A.f96",
         "email": "",
         "full_name": "",
         "bio": "",
@@ -50,52 +11,5 @@
         "location": "",
         "profilePic": "",
         "minor": ""
-    },
-    {
-        "username": "7ayzan",
-        "password": "$2y$10$5LksQkbG2HLaizw8EhMfN.ZgJWI\/kjadrEDeqviboXteMu5UPVyey",
-        "email": "",
-        "full_name": "Fayzan",
-        "bio": "",
-        "grade_level": "",
-        "major": "",
-        "portfolio_url": "",
-        "location": "",
-        "profilePic": "",
-        "minor": ""
-    },
-    {
-        "username": "testing",
-        "password": "$2y$10$\/qf1J\/oSMe1RdJ6E6IccbesrJaaZcERVD1xAo1qCcWrW6pbHNvqPu",
-        "email": "",
-        "full_name": "",
-        "bio": "",
-        "grade_level": "",
-        "major": "",
-        "portfolio_url": "",
-        "location": "",
-        "profilePic": "",
-        "minor": ""
-    },
-    {
-        "username": "test123",
-        "password": "$2y$10$8.uCMlBNzJR2ifYpfzuANuvTOCLGSgxf4xr.xzYwuhpseDPpNIfK2",
-=======
-        "username": "test123",
-        "password": "$2y$10$pby5JR.B6uyIC3LHLexjnOPzxMPZx6P9Kihy3LAcsWDMlrUQ\/A71a",
->>>>>>> Stashed changes
-        "email": "test123@gmail.com",
-        "full_name": "",
-        "bio": "",
-        "grade_level": "",
-        "major": "",
-        "portfolio_url": "",
-        "location": "",
-<<<<<<< Updated upstream
-        "profilePic": "profile_pictures\/Screenshot 2024-04-10 at 9.28.14\u202fPM.png",
-        "minor": ""
-=======
-        "profilePic": ""
->>>>>>> Stashed changes
     }
 ]
