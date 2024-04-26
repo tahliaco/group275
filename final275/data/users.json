@@ -22,7 +22,7 @@
         "major": "",
         "portfolio_url": "",
         "location": "",
-        "profilePic": "",
+        "profilePic": "profile_pictures\/icon123.png",
         "minor": ""
     },
     {
@@ -61,6 +61,19 @@
         "portfolio_url": "",
         "location": "",
         "profilePic": "",
+        "minor": ""
+    },
+    {
+        "username": "test123",
+        "password": "$2y$10$8.uCMlBNzJR2ifYpfzuANuvTOCLGSgxf4xr.xzYwuhpseDPpNIfK2",
+        "email": "test123@gmail.com",
+        "full_name": "",
+        "bio": "",
+        "grade_level": "",
+        "major": "",
+        "portfolio_url": "",
+        "location": "",
+        "profilePic": "profile_pictures\/Screenshot 2024-04-10 at 9.28.14\u202fPM.png",
         "minor": ""
     }
 ]
