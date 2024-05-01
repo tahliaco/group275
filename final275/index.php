@@ -15,17 +15,35 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
 
 <body>
 
-    <nav class="bottom-nav">
-        <ul class="nav-list">
-            <li><a href="index.php" class="icon home-icon">Home</a></li>
-            <li><a href="about.html" class="icon about-icon">About</a></li>
-            <?php if (isset($_SESSION['user'])): ?>
-                <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
-            <?php else: ?>
-                <li><a href="login.html" class="icon profile-icon">Login/Register</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav>
+<nav class="bottom-nav">
+    <ul class="nav-list">
+        <li>
+            <a href="index.php" class="icon">
+                <div class="icon-container">
+                    <img src="../final275/img/logo.svg" alt="Home">
+                    <span><?php echo isset($_SESSION['user']) ? 'Home' : 'Login/Register'; ?></span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="about.html" class="icon">
+                <div class="icon-container">
+                    <img src="../final275/img/abouticon.png" alt="About">
+                    <span>About</span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="profile.php" id="profileLink" class="icon">
+                <div class="icon-container">
+                    <img src="../final275/img/portalicon.png" alt="Profile">
+                    <span><?php echo isset($_SESSION['user']) ? 'Portal' : 'Login/Register'; ?></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+</nav>
+
 
     <main class="profile-feed">
     <h1>Profile Feed</h1>

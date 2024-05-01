@@ -108,11 +108,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Add additional CSS or JS files here -->
 </head>
 
-    <nav class="bottom-nav">
+<nav class="bottom-nav">
         <ul class="nav-list">
-            <li><a href="index.php" class="icon home-icon">Home</a></li>
-            <li><a href="about.html" class="icon about-icon">About</a></li>
-            <li><a href="profile.php" class="icon profile-icon">My Profile</a></li>
+            <li>
+                <a href="index.php" class="icon">
+                    <div class="icon-container">
+                        <img src="../final275/img/logo.svg" alt="Home">
+                        <span>Home</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="about.html" class="icon">
+                    <div class="icon-container">
+                        <img src="../final275/img/abouticon.png" alt="About">
+                        <span>About</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="profile.php" id="profileLink" class="icon">
+                    <div class="icon-container">
+                        <img src="../final275/img/portalicon.png" alt="Profile">
+                        <span>Portal</span>
+                    </div>
+                </a>
+            </li>
         </ul>
     </nav>
 <body>
@@ -120,9 +141,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (!empty($userDetails['profilePic'])): ?>
             <img src="<?php echo htmlspecialchars($userDetails['profilePic']); ?>" alt="Profile picture" class="profile-picture-corner">
         <?php endif; ?>
-    <h1>Edit Profile</h1>
     </div>
     <div class="profile-info">
+        <div class="logo">
+            <img src="img/logo.svg">
+        </div>
+        <h1 class="Freelance">Freelance Portal</h1>
         <!-- Display error or success messages here -->
         <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($errorMessage)) {

@@ -16,9 +16,22 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   src: url(neurialgroteskregular.ttf) format('ttf')
 }
 
+@font-face {
+  font-family: 'Jakarta';
+  src: url('PlusJakartaSans-VariableFont_wght.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('Inconsolata-VariableFont_wdth,wght.ttf') format('ttf');
+}
+
+
 body {
-  font-family: 'Arial', sans-serif;
-  color: $text-color;
+  font-family: 'NeurialGroteskMed', sans-serif;
+  letter-spacing: 0.4px;
+  color: #28394F;
+  font-weight: 200;
   margin: 10px;
   padding-bottom: 50px; 
   overflow: auto;
@@ -45,30 +58,61 @@ body {
         padding: 10px;
         text-decoration: none;
         color: black;
-        &::before {
-          content: '';
-          display: block;
-          margin: 0 auto 5px;
-          width: $icon-size;
-          height: $icon-size;
-          background-size: cover;
-        }
       }
     }
   }
 }
 
-.home-icon::before {
-  background-image: url('../final275/img/logo.svg');
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0; /* Adjust the left position to start from the left edge */
+  width: 100%; /* Ensure full width */
+  background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.about-icon::before {
-  background-image: url('../final275//img/about-icon.png');
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.profile-icon::before {
-  background-image: url('../final275/img/profile-icon.png');
+.nav-list li {
+  flex-grow: 1;
+  text-align: center;
 }
+
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  margin-top: 2px;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column; /* Display icon and text in a column */
+  align-items: center;
+}
+
+.icon img {
+  width: auto;
+  height: 30px;
+}
+
+.icon span {
+  font-size: 12px;
+  margin-top: 2px; /* Add margin to bump down the text */
+
+}
+
 
 #profileForm {
   padding: 30pt;
@@ -171,15 +215,29 @@ html {
 
 .header {
   margin: 50px;
-  margin-top: -10px;
-
+  margin-top: -4px;
+  font-family: 'Jakarta', sans-serif;
+  letter-spacing: 0.4px;
+  color: #28394F;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: fit-content;
+  font-size: 13px;
+  
 }
 
 .RegText {
   width: 80%;
   margin: 50px;
   margin-top: -10px;
+  font-family: 'NeurialGroteskMed', sans-serif;
+  letter-spacing: 0.4px;
+  color: #28394F;
+  font-weight: 200;
 }
+
 
 .container {
   background-color: $background-color;
@@ -225,3 +283,37 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
   box-sizing: border-box;
 }
 
+// Login
+.profile-info {
+  background-color: $background-color;
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto; /* Horizontally center the container */
+  border-radius: 2%;
+  margin-top: -18px;
+}
+
+input[type="text"] {
+  background-color: $background-color; /* Change the background color to orange */
+  color: #28394F; /* Change the text color to black */
+  border: 1px solid #28394F; /* Add border to textboxes */
+}
+
+#bio,
+#email,
+#portfolio_url {
+  background-color: $background-color; /* Change the background color to orange */
+  color: #28394F; /* Change the text color to black */
+  border: 1px solid #28394F; /* Add border to textboxes */
+}
+
+.Freelance {
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: fit-content;
+    font-size: 24px;
+
+  
+}
