@@ -17,7 +17,6 @@ $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
-  background-color: $background-color;
   font-family: 'Arial', sans-serif;
   color: $text-color;
   margin: 10px;
@@ -60,11 +59,7 @@ body {
 }
 
 .home-icon::before {
-<<<<<<< Updated upstream
-  background-image: url('../img/logo.svg');
-=======
-  background-image: url('../final275/img/home-icon.png');
->>>>>>> Stashed changes
+  background-image: url('../final275/img/logo.svg');
 }
 
 .about-icon::before {
@@ -187,7 +182,7 @@ html {
 }
 
 .container {
-  background-color: #ffffff;
+  background-color: $background-color;
   width: 90%;
   padding: 20px;
   margin: 0 auto; /* Horizontally center the container */
