@@ -73,6 +73,7 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
             </div>
                     </br>
         <?php endforeach; ?>
+        <br><br><br>
         <div class="forbackprofiles">
             <button class="purple" id="prev"><img src="../final275/img/backwardbutton.svg"></button>
             <button class="orange" id="next"><img src="../final275/img/forwardbutton.svg"></button>
