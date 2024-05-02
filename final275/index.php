@@ -21,7 +21,6 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
             <a href="index.php" class="icon">
                 <div class="icon-container">
                     <img src="../final275/img/logo.svg" alt="Home">
-                    <span><?php echo isset($_SESSION['user']) ? 'Home' : 'Login/Register'; ?></span>
                 </div>
             </a>
         </li>
@@ -29,7 +28,6 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
             <a href="about.html" class="icon">
                 <div class="icon-container">
                     <img src="../final275/img/abouticon.png" alt="About">
-                    <span>About</span>
                 </div>
             </a>
         </li>
@@ -37,7 +35,6 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
             <a href="profile.php" id="profileLink" class="icon">
                 <div class="icon-container">
                     <img src="../final275/img/portalicon.png" alt="Profile">
-                    <span><?php echo isset($_SESSION['user']) ? 'Portal' : 'Login/Register'; ?></span>
                 </div>
             </a>
         </li>
@@ -75,8 +72,11 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
                 </div>
             </div>
                     </br>
-
         <?php endforeach; ?>
+        <div class="forbackprofiles">
+            <button class="purple" id="prev"><img src="../final275/img/backwardbutton.svg"></button>
+            <button class="orange" id="next"><img src="../final275/img/forwardbutton.svg"></button>
+        </div>
     </main>
     
     <script src="js/jquery-3.7.1.min.js"></script>

@@ -114,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="index.php" class="icon">
                     <div class="icon-container">
                         <img src="../final275/img/logo.svg" alt="Home">
-                        <span>Home</span>
                     </div>
                 </a>
             </li>
@@ -122,7 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="about.html" class="icon">
                     <div class="icon-container">
                         <img src="../final275/img/abouticon.png" alt="About">
-                        <span>About</span>
                     </div>
                 </a>
             </li>
@@ -130,7 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="profile.php" id="profileLink" class="icon">
                     <div class="icon-container">
                         <img src="../final275/img/portalicon.png" alt="Profile">
-                        <span>Portal</span>
                     </div>
                 </a>
             </li>

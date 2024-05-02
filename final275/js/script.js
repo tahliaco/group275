@@ -130,3 +130,48 @@ if (logoutButton) {
     // Check login status when the DOM is fully loaded
     checkLoginStatus();
 });
+$(document).ready(function() {
+    var currentProfileIndex = 0;
+    var totalProfiles = $('.profile-card').length;
+    
+    // Function to show only one profile based on index
+    function showProfile(index) {
+        $('.profile-card').hide();
+        $('.profile-card').eq(index).show();
+    }
+
+    // Initially show the first profile
+    showProfile(currentProfileIndex);
+
+    // Handle click on 'Next' button
+    $('#next').click(function() {
+        if (currentProfileIndex < totalProfiles - 1) {
+            currentProfileIndex++;
+            showProfile(currentProfileIndex);
+        }
+    });
+
+    // Handle click on 'Previous' button
+    $('#prev').click(function() {
+        if (currentProfileIndex > 0) {
+            currentProfileIndex--;
+            showProfile(currentProfileIndex);
+        }
+    });
+});
+$(document).ready(function() {
+    function setProfileCardTopPosition() {
+        $('.profile-card').css('margin-left', '5vw');
+        $('.profile-card').css('margin-right', '5vw');
+        $('.profile-card').css('width', '90vw');
+        $('.profile-card').css('left', '0');
+        $('.profile-card').css('right', '90vw');
+        $('.profile-card').css('top', '140px'); // Set the top position to 120px
+    }
+    // Call the function initially to set the top position
+    setProfileCardTopPosition();
+
+    // Set an interval to continuously apply the top position every 100 milliseconds
+    setInterval(setProfileCardTopPosition, 100);
+});
+
