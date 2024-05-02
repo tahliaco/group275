@@ -166,7 +166,7 @@ $(document).ready(function() {
         $('.profile-card').css('width', '90vw');
         $('.profile-card').css('left', '0');
         $('.profile-card').css('right', '90vw');
-        $('.profile-card').css('top', '140px'); // Set the top position to 120px
+        $('.profile-card').css('top', '70px'); // Set the top position to 120px
     }
     // Call the function initially to set the top position
     setProfileCardTopPosition();

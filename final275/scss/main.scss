@@ -321,7 +321,7 @@ input[type="text"] {
   margin-left: 5vw;
   margin-right: 5vw;
   position: fixed;
-  top: 140px; 
+  top: 70px; 
   display: none;
 }
 .forbackprofiles{
@@ -351,7 +351,7 @@ input[type="text"] {
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
 .prevnext{
-  margin-top: 380px;
+  margin-top: 360px;
 }
 #logout{
   background-image: linear-gradient(117.24deg, #AFAFDD 1.74%, #7E7EEB 96.77%);
@@ -368,4 +368,7 @@ input[type="text"] {
   font-size: medium;
   padding: 5%;
   color: #fff;
+}
+html{
+  margin-top: -80px;
 }
