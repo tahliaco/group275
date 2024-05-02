@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($userDetails['location'] ?? ''); ?>">
             <br><br>
 
-            <button type="submit">Update Profile</button>
+            <button id="submitbutton" type="submit">Update Profile</button>
     </br>
     </br>
             <button id="logout">Logout</button>
