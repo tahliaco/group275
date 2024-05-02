@@ -330,8 +330,9 @@ input[type="text"] {
   grid-template-columns: 1fr 1fr;
   gap: 10vw;
   button{
-    height: 50px;
-    width: 50px;
+    box-shadow: $card-shadow;
+    height: 70px;
+    width: 70px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
