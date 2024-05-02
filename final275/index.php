@@ -6,7 +6,7 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="explorepagehtml">
 <head>
     <meta charset="UTF-8">
     <title>Profile Feed</title>
