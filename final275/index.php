@@ -74,15 +74,12 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
                     </br>
         <?php endforeach; ?>
         <br><br><br>
-        <div class="forbackprofiles">
+        <div class="forbackprofiles prevnext">
             <button class="purple" id="prev"><img src="../final275/img/backwardbutton.svg"></button>
             <button class="orange" id="next"><img src="../final275/img/forwardbutton.svg"></button>
         </div>
     </main>
-    
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
-
-
 </body>
 </html>
