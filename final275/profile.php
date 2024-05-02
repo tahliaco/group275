@@ -155,43 +155,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } ?>
         <form id="profileForm" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
         <label for="profilePic">Profile Picture:</label>
-        <input type="file" id="profilePic" name="profile_pic">
+        <input type="file" id="profilePic" required name="profile_pic">
             <br><br>    
         
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($userDetails['username']); ?>" readonly>
+            <input type="text" id="username" required name="username" value="<?php echo htmlspecialchars($userDetails['username']); ?>" readonly>
             <br><br>
 
             <label for="full_name">Full Name:</label>
-            <input type="text" id="full_name" name="full_name" value="<?php echo htmlspecialchars($userDetails['full_name'] ?? ''); ?>">
+            <input type="text" id="full_name" required name="full_name" value="<?php echo htmlspecialchars($userDetails['full_name'] ?? ''); ?>">
             <br><br>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userDetails['email']); ?>" readonly>
+            <input type="email" id="email" required name="email" value="<?php echo htmlspecialchars($userDetails['email']); ?>" readonly>
             <br><br>
 
             <label for="bio">Bio:</label>
-            <textarea id="bio" name="bio" rows="4" cols="50"><?php echo htmlspecialchars($userDetails['bio'] ?? ''); ?></textarea>
+            <textarea id="bio" required name="bio" rows="4" cols="50"><?php echo htmlspecialchars($userDetails['bio'] ?? ''); ?></textarea>
             <br><br>
 
             <label for="grade_level">Grade Level:</label>
-            <input type="text" id="grade_level" name="grade_level" value="<?php echo htmlspecialchars($userDetails['grade_level'] ?? ''); ?>">
+            <input type="text" id="grade_level" name="grade_level" required value="<?php echo htmlspecialchars($userDetails['grade_level'] ?? ''); ?>">
             <br><br>
 
             <label for="major">Major:</label>
-            <input type="text" id="major" name="major" value="<?php echo htmlspecialchars($userDetails['major'] ?? ''); ?>">
+            <input type="text" id="major" name="major" required value="<?php echo htmlspecialchars($userDetails['major'] ?? ''); ?>">
             <br><br>
 
             <label for="minor">Minor:</label>
-            <input type="text" id="minor" name="minor" value="<?php echo htmlspecialchars($userDetails['minor'] ?? ''); ?>">
+            <input type="text" id="minor" name="minor" required value="<?php echo htmlspecialchars($userDetails['minor'] ?? ''); ?>">
             <br><br>
 
             <label for="portfolio_url">Portfolio URL:</label>
-            <input type="url" id="portfolio_url" name="portfolio_url" value="<?php echo htmlspecialchars($userDetails['portfolio_url'] ?? ''); ?>">
+            <input type="url" id="portfolio_url" name="portfolio_url" required value="<?php echo htmlspecialchars($userDetails['portfolio_url'] ?? ''); ?>">
             <br><br>
 
             <label for="location">Location:</label>
-            <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($userDetails['location'] ?? ''); ?>">
+            <input type="text" id="location" name="location" required value="<?php echo htmlspecialchars($userDetails['location'] ?? ''); ?>">
             <br><br>
 
             <button id="submitbutton" type="submit">Update Profile</button>
