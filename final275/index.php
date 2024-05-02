@@ -6,7 +6,8 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
 ?>
 
 <!DOCTYPE html>
-<html lang="en" class="explorepagehtml">
+<html lang="en">
+<div class="explorepageshift">
 <head>
     <meta charset="UTF-8">
     <title>Profile Feed</title>
@@ -82,4 +83,5 @@ $profiles = json_decode(file_get_contents($file_path), true) ?: [];
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
 </body>
+</div>
 </html>
